@@ -1,0 +1,37 @@
+<h5> *ngIf </h5>
+<div *ngIf="cursos.length > 0">
+  Lista de cursos aqui. l
+</div>
+<div *ngIf="cursos.length == 0">
+  Não existem cursos para serem listados! l
+</div>
+
+<div *ngIf="mostrarCursos">
+  Lista de cursos aqui. b
+</div>
+<div *ngIf="!mostrarCursos">
+  Não existem cursos para serem listados! b
+</div>
+
+<br>
+
+<button (click)="onMostrarCursos()">Mostrar/Esconder Cursos</button>
+
+<h5>Hidden como alternativa</h5>
+<div [hidden]="!mostrarCursos">
+  Lista de cursos aqui. b
+</div>
+<div [hidden]="mostrarCursos">
+  Não existem cursos para serem listados! b
+</div>
+
+<h5>Removendo o * e usando template</h5>
+<div *ngIf="mostrarCursos">
+</div>
+<ng-template [ngIf]="mostrarCursos">
+  <div> Lista de cursos aqui. tempalte1 </div>
+</ng-template>
+
+<div template="ngIf mostrarCursos">
+  Lista de cursos aqui. template2
+</div>
