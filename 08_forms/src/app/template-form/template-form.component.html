@@ -36,7 +36,8 @@
       <!-- CEP -->
       <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
         <label for="cep" class="control-label">CEP</label>
-        <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel">
+        <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel"
+          (blur)="consultaCEP($event.target.value)">
 
         <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
 
