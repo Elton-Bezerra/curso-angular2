@@ -30,73 +30,76 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <!-- CEP -->
-    <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
-      <label for="cep" class="control-label">CEP</label>
-      <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel">
 
-      <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
+  <div ngModelGroup="endereco">
+    <div class="form-group">
+      <!-- CEP -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
+        <label for="cep" class="control-label">CEP</label>
+        <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel">
 
-    </div>
-    <!-- NUMERO -->
-    <div class="col-md-3" [ngClass]="aplicaCssErro(numero)">
-      <label for="numero" class="control-label">Número</label>
-      <input placeholder="100" type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel">
+        <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
 
-      <app-campo-control-erro campo="número" [mostrarErro]="validador(numero)"></app-campo-control-erro>
+      </div>
+      <!-- NUMERO -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro(numero)">
+        <label for="numero" class="control-label">Número</label>
+        <input placeholder="100" type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel">
 
-    </div>
-    <!-- COMPLEMENTO -->
-    <div class="col-md-6">
-      <label for="complemento" class="control-label">Complemento</label>
-      <input type="text" placeholder="Casa 2 " class="form-control" id="complemento" name="complemento" ngModel #complemento="ngModel">
-    </div>
+        <app-campo-control-erro campo="número" [mostrarErro]="validador(numero)"></app-campo-control-erro>
 
-  </div>
-
-
-  <div class="form-group" [ngClass]="aplicaCssErro(rua)">
-
-    <div class="col-sm-12">
-      <label for="rua" class="control-label">Rua</label>
-    </div>
-
-    <div class="col-sm-12">
-      <input type="text" class="form-control" id="rua" name="rua" [ngModel]="usuario.rua" required #rua="ngModel" readonly>
-
-      <app-campo-control-erro campo="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
-
-    </div>
-  </div>
-
-  <div class="form-group">
-    <!-- BAIRRO -->
-    <div class="col-md-5" [ngClass]="aplicaCssErro(bairro)">
-      <label for="bairro" class="control-label">Bairro</label>
-      <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
-
-      <app-campo-control-erro campo="bairro" [mostrarErro]="validador(bairro)"></app-campo-control-erro>
+      </div>
+      <!-- COMPLEMENTO -->
+      <div class="col-md-6">
+        <label for="complemento" class="control-label">Complemento</label>
+        <input type="text" placeholder="Casa 2 " class="form-control" id="complemento" name="complemento" ngModel #complemento="ngModel">
+      </div>
 
     </div>
 
-    <!-- CIDADE -->
-    <div class="col-md-4" [ngClass]="aplicaCssErro(cidade)">
-      <label for="cidade" class="control-label">Cidade</label>
-      <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel">
 
-      <app-campo-control-erro campo="cidade" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
+    <div class="form-group" [ngClass]="aplicaCssErro(rua)">
 
+      <div class="col-sm-12">
+        <label for="rua" class="control-label">Rua</label>
+      </div>
+
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="rua" name="rua" [ngModel]="usuario.rua" required #rua="ngModel" readonly>
+
+        <app-campo-control-erro campo="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
+
+      </div>
     </div>
 
-    <!-- ESTADO -->
-    <div class="col-md-3" [ngClass]="aplicaCssErro(estado)">
-      <label for="estado" class="control-label">Estado</label>
-      <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
+    <div class="form-group">
+      <!-- BAIRRO -->
+      <div class="col-md-5" [ngClass]="aplicaCssErro(bairro)">
+        <label for="bairro" class="control-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
 
-      <app-campo-control-erro campo="estado" [mostrarErro]="validador(estado)"></app-campo-control-erro>
+        <app-campo-control-erro campo="bairro" [mostrarErro]="validador(bairro)"></app-campo-control-erro>
+
+      </div>
+
+      <!-- CIDADE -->
+      <div class="col-md-4" [ngClass]="aplicaCssErro(cidade)">
+        <label for="cidade" class="control-label">Cidade</label>
+        <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel">
+
+        <app-campo-control-erro campo="cidade" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
+
+      </div>
+
+      <!-- ESTADO -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro(estado)">
+        <label for="estado" class="control-label">Estado</label>
+        <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
+
+        <app-campo-control-erro campo="estado" [mostrarErro]="validador(estado)"></app-campo-control-erro>
+      </div>
     </div>
-  </div>
+  </div>  
 
   <button [disabled]="!f.valid" type="submit" class="btn btn-default">Submit</button>
 
