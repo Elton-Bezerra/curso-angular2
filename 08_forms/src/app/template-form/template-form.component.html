@@ -1,9 +1,6 @@
 <form #f="ngForm" (ngSubmit)="onSubmit(f)" class="form-horizontal">
 
-  <div class="form-group" [ngClass]="{
-        'has-error' : validador(nome),
-        'has-feedback' : validador(nome)  
-      }">
+  <div class="form-group" [ngClass]="aplicaCssErro(nome)">
 
     <div class="col-sm-12">
       <label for="nome" class="control-label">Nome</label>
@@ -13,20 +10,13 @@
       <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" [ngModel]="usuario.nome" required
         #nome="ngModel">
 
-      <span *ngIf="validador(nome)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-      <span *ngIf="validador(nome)" class="sr-only">(error)</span>
-      <div *ngIf="validador(nome)">
-        <div class="alert alert-danger">
-          <strong>Atenção!</strong> O campo nome deve ser preenchido! </div>
-      </div>
+      <app-campo-control-erro campo="nome" [mostrarErro]="validador(nome)"></app-campo-control-erro>
+
     </div>
 
   </div>
 
-  <div class="form-group" [ngClass]="{
-    'has-error' : validador(email),
-    'has-feedback' : validador(email)  
-  }">
+  <div class="form-group" [ngClass]="aplicaCssErro(email)">
     <div class="col-sm-12">
       <label for="email" class="control-label">Email</label>
     </div>
@@ -35,45 +25,27 @@
       <input type="email" class="form-control" id="email" name="email" placeholder="nome@email.com" [ngModel]="usuario.email" required
         email #email="ngModel">
 
-      <span *ngIf="validador(email)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-      <span *ngIf="validador(email)" class="sr-only">(error)</span>
-      <div *ngIf="validador(email)">
-        <div class="alert alert-danger">
-          <strong>Atenção!</strong> O campo email deve ser preenchido corretamente! </div>
-      </div>
+      <app-campo-control-erro campo="email" [mostrarErro]="validador(email)"></app-campo-control-erro>
+
     </div>
   </div>
 
   <div class="form-group">
     <!-- CEP -->
-    <div class="col-md-3" [ngClass]="{
-      'has-error' : validador(cep),
-      'has-feedback' : validador(cep)
-    }">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
       <label for="cep" class="control-label">CEP</label>
       <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel">
 
-      <span *ngIf="validador(cep)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-      <span *ngIf="validador(cep)" class="sr-only">(error)</span>
-      <div *ngIf="validador(cep)">
-        <div class="alert alert-danger">
-          O campo de CEP é obrigatório! </div>
-      </div>
+      <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
+
     </div>
     <!-- NUMERO -->
-    <div class="col-md-3" [ngClass]="{
-      'has-error' : validador(numero),
-      'has-feedback' : validador(numero)
-    }">
+    <div class="col-md-3" [ngClass]="aplicaCssErro(numero)">
       <label for="numero" class="control-label">Número</label>
       <input placeholder="100" type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel">
 
-      <span *ngIf="validador(numero)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-      <span *ngIf="validador(numero)" class="sr-only">(error)</span>
-      <div *ngIf="validador(numero)">
-        <div class="alert alert-danger">
-          O campo do número é obrigatório! </div>
-      </div>
+      <app-campo-control-erro campo="número" [mostrarErro]="validador(numero)"></app-campo-control-erro>
+
     </div>
     <!-- COMPLEMENTO -->
     <div class="col-md-6">
@@ -84,10 +56,7 @@
   </div>
 
 
-  <div class="form-group" [ngClass]="{
-        'has-error' : validador(rua),
-        'has-feedback' : validador(rua) 
-      }">
+  <div class="form-group" [ngClass]="aplicaCssErro(rua)">
 
     <div class="col-sm-12">
       <label for="rua" class="control-label">Rua</label>
@@ -96,67 +65,40 @@
     <div class="col-sm-12">
       <input type="text" class="form-control" id="rua" name="rua" [ngModel]="usuario.rua" required #rua="ngModel" readonly>
 
-      <span *ngIf="validador(rua)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-      <span *ngIf="validador(rua)" class="sr-only">(error)</span>
-      <div *ngIf="validador(rua)">
-        <div class="alert alert-danger">
-          <strong>Atenção!</strong> O campo rua deve ser preenchido! </div>
-      </div>
+      <app-campo-control-erro campo="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
+
     </div>
   </div>
 
   <div class="form-group">
     <!-- BAIRRO -->
-      <div class="col-md-5" [ngClass]="{
-        'has-error' : validador(bairro),
-        'has-feedback' : validador(bairro)
-      }">
-        <label for="bairro" class="control-label">Bairro</label>
-        <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
-  
-        <span *ngIf="validador(bairro)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <span *ngIf="validador(bairro)" class="sr-only">(error)</span>
-        <div *ngIf="validador(bairro)">
-          <div class="alert alert-danger">
-            O campo de bairro é obrigatório! </div>
-        </div>
-      </div>
+    <div class="col-md-5" [ngClass]="aplicaCssErro(bairro)">
+      <label for="bairro" class="control-label">Bairro</label>
+      <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
 
-      <!-- CIDADE -->
-      <div class="col-md-4" [ngClass]="{
-        'has-error' : validador(cidade),
-        'has-feedback' : validador(cidade)
-      }">
-        <label for="cidade" class="control-label">Cidade</label>
-        <input  type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel">
-  
-        <span *ngIf="validador(cidade)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <span *ngIf="validador(cidade)" class="sr-only">(error)</span>
-        <div *ngIf="validador(cidade)">
-          <div class="alert alert-danger">
-            O campo de cidade é obrigatório! </div>
-        </div>
-      </div>
+      <app-campo-control-erro campo="bairro" [mostrarErro]="validador(bairro)"></app-campo-control-erro>
 
-      <!-- ESTADO -->
-      <div class="col-md-3" [ngClass]="{
-        'has-error' : validador(estado),
-        'has-feedback' : validador(estado)
-      }">
-        <label for="estado" class="control-label">Estado</label>
-        <input  type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
-  
-        <span *ngIf="validador(estado)" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-        <span *ngIf="validador(estado)" class="sr-only">(error)</span>
-        <div *ngIf="validador(estado)">
-          <div class="alert alert-danger">
-            O campo de estado é obrigatório! </div>
-        </div>
-      </div>
+    </div>
+
+    <!-- CIDADE -->
+    <div class="col-md-4" [ngClass]="aplicaCssErro(cidade)">
+      <label for="cidade" class="control-label">Cidade</label>
+      <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel">
+
+      <app-campo-control-erro campo="cidade" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
+
+    </div>
+
+    <!-- ESTADO -->
+    <div class="col-md-3" [ngClass]="aplicaCssErro(estado)">
+      <label for="estado" class="control-label">Estado</label>
+      <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
+
+      <app-campo-control-erro campo="estado" [mostrarErro]="validador(estado)"></app-campo-control-erro>
+    </div>
   </div>
 
   <button [disabled]="!f.valid" type="submit" class="btn btn-default">Submit</button>
 
   <app-form-debug [form]="f"></app-form-debug>
-
 </form>

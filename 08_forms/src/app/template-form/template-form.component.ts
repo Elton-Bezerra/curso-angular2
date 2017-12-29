@@ -28,4 +28,11 @@ export class TemplateFormComponent implements OnInit {
   validador(campo){
     return !campo.valid && campo.touched;
   }  
+
+  aplicaCssErro(campo){
+    return {
+      'has-error' : this.validador(campo),
+      'has-feedback' : this.validador(campo)  
+    }
+  }
 }
