@@ -25,17 +25,7 @@ export class TemplateFormComponent implements OnInit {
     
   }
 
-  validaNome(nome){
-    return !nome.valid && nome.touched;
-  }
-  
-  validaEmail(email){
-    return !email.valid && email.touched;
-  }
-
-  validaCep(cep){
-    return !cep.valid && cep.touched;
-
-  }
-
+  validador(campo){
+    return !campo.valid && campo.touched;
+  }  
 }
