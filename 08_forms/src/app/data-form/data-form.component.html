@@ -1,3 +1,30 @@
-<p>
-  data-form works!
-</p>
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+
+  <div class="form-group">
+
+    <div class="col-sm-12">
+      <label for="nome" class="control-label">Nome</label>
+    </div>
+
+    <div class="col-sm-12">
+      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Digite seu nome" >
+    </div>
+
+  </div>
+
+  <div class="form-group">
+
+    <div class="col-sm-12">
+      <label for="email" class="control-label">Email</label>
+    </div>
+
+    <div class="col-sm-12">
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="nome@email.com">
+    </div>
+
+  </div>
+
+  <button  type="submit" class="btn btn-default">Submit</button>
+
+  <app-form-debug [form]="formulario"></app-form-debug>
+</form>
