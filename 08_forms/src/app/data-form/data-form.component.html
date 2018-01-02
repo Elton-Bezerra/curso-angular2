@@ -1,18 +1,20 @@
-<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()" >
+<form class="form-horizontal" [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="aplicaCssErro('nome')">
 
     <div class="col-sm-12">
       <label for="nome" class="control-label">Nome</label>
     </div>
 
     <div class="col-sm-12">
-      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Digite seu nome" >
+      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Digite seu nome">
+      <app-campo-control-erro msg="O nome deve conter no mínimo 3 caracteres!" [mostrarErro]="validador('nome')"></app-campo-control-erro>
+
     </div>
 
   </div>
 
-  <div class="form-group">
+  <div class="form-group" [ngClass]="aplicaCssErro('email')">
 
     <div class="col-sm-12">
       <label for="email" class="control-label">Email</label>
@@ -20,12 +22,87 @@
 
     <div class="col-sm-12">
       <input type="email" class="form-control" id="email" formControlName="email" placeholder="nome@email.com">
+      <app-campo-control-erro msg="Email é obrigatório!" [mostrarErro]="validador('email')"></app-campo-control-erro>
+      <app-campo-control-erro msg="Email deve ter o formado exemplo@email.com" [mostrarErro]="verificaEmailInvalido()"></app-campo-control-erro>
+
     </div>
 
   </div>
 
-  <button  type="submit" class="btn btn-default">Submit</button>
-  <button  (click)="resetar()" class="btn">Cancelar</button>
+  <!-- ENDEREÇO -->
+  <div formGroupName="endereco">
+    <div class="form-group">
+      <!-- CEP -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.cep')">
+        <label for="cep" class="control-label">CEP</label>
+        <input placeholder="12345-789 ou 12345678" type="text" class="form-control" id="cep" formControlName="cep"
+        (blur)="consultaCEP()">
+
+        <app-campo-control-erro msg="CEP é obrigatório!" [mostrarErro]="validador('endereco.cep')"></app-campo-control-erro>
+
+      </div>
+      <!-- NUMERO -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.numero')">
+        <label for="numero" class="control-label">Número</label>
+        <input placeholder="100" type="text" class="form-control" id="numero" formControlName="numero">
+
+        <app-campo-control-erro msg="Número é obrigatório!" [mostrarErro]="validador('endereco.numero')"></app-campo-control-erro>
+
+      </div>
+      <!-- COMPLEMENTO -->
+      <div class="col-md-6">
+        <label for="complemento" class="control-label">Complemento</label>
+        <input type="text" placeholder="Casa 2 " class="form-control" id="complemento" name="complemento" formControlName="complemento">
+      </div>
+
+    </div>
+
+
+    <div class="form-group" [ngClass]="aplicaCssErro('endereco.rua')">
+
+      <div class="col-sm-12">
+        <label for="rua" class="control-label">Rua</label>
+      </div>
+
+      <div class="col-sm-12">
+        <input type="text" class="form-control" id="rua" formControlName="rua">
+
+        <app-campo-control-erro msg="Rua é obrigatório!" [mostrarErro]="validador('endereco.rua')"></app-campo-control-erro>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <!-- BAIRRO -->
+      <div class="col-md-5" [ngClass]="aplicaCssErro('endereco.bairro')">
+        <label for="bairro" class="control-label">Bairro</label>
+        <input type="text" class="form-control" id="bairro" formControlName="bairro">
+
+        <app-campo-control-erro msg="Bairro é obrigatório!" [mostrarErro]="validador('endereco.bairro')"></app-campo-control-erro>
+
+      </div>
+
+      <!-- CIDADE -->
+      <div class="col-md-4" [ngClass]="aplicaCssErro('endereco.cidade')">
+        <label for="cidade" class="control-label">Cidade</label>
+        <input type="text" class="form-control" id="cidade" formControlName="cidade">
+
+        <app-campo-control-erro msg="Cidade é obrigatório!" [mostrarErro]="validador('endereco.cidade')"></app-campo-control-erro>
+
+      </div>
+
+      <!-- ESTADO -->
+      <div class="col-md-3" [ngClass]="aplicaCssErro('endereco.estado')">
+        <label for="estado" class="control-label">Estado</label>
+        <input type="text" class="form-control" id="estado" formControlName="estado">
+
+        <app-campo-control-erro msg="Estado é obrigatório!" [mostrarErro]="validador('endereco.estado')"></app-campo-control-erro>
+      </div>
+    </div>
+  </div>
+
+  <button [disabled]="!formulario.valid" type="submit" class="btn btn-default">Submit</button>
+  <button (click)="resetar()" class="btn">Cancelar</button>
 
   <app-form-debug [form]="formulario"></app-form-debug>
 </form>
