@@ -23,10 +23,13 @@ export class TemplateFormComponent implements OnInit {
     // console.log(form);
 
     console.log(JSON.stringify(form.value));
-    
+
     this.http.post('https://httpbin.org/post', JSON.stringify(form.value))
-      .map(res =>  res)
-      .subscribe(dados => console.log(dados));
+      .map(res => res)
+      .subscribe(dados => {
+        console.log(dados);
+        form.form.reset();
+      });
 
   }
 
@@ -47,7 +50,7 @@ export class TemplateFormComponent implements OnInit {
     if (cep != '') {
       // expressão regular para validar o cep
       var validacep = /^[0-9]{8}$/;
-      
+
       if (validacep.test(cep)) {
 
         this.resetaDadosForm(form);
@@ -79,7 +82,7 @@ export class TemplateFormComponent implements OnInit {
     formulario.form.patchValue({
       endereco: {
         rua: dados.logradouro,
-        cep: dados.cep,       
+        cep: dados.cep,
         complemento: dados.complemento,
         bairro: dados.bairro,
         cidade: dados.localidade,
@@ -88,7 +91,7 @@ export class TemplateFormComponent implements OnInit {
     });
   }
 
-  resetaDadosForm(formulario){
+  resetaDadosForm(formulario) {
     formulario.form.patchValue({
       endereco: {
         rua: null,

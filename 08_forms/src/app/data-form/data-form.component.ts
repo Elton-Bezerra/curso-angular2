@@ -15,7 +15,7 @@ export class DataFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private http: Http
-    ) { }
+  ) { }
 
   ngOnInit() {
 
@@ -32,12 +32,21 @@ export class DataFormComponent implements OnInit {
 
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.formulario.value);
     this.http.post('https://httpbin.org/post', JSON.stringify(this.formulario.value))
-    .map(res =>  res)
-    .subscribe(dados => console.log(dados));
+      .map(res => res)
+      .subscribe(dados => {
+        console.log(dados);
+        //reseta o formulário
+        this.resetar();
+      }, 
+      (error: any) => console.log(error));
 
+  }
+
+  resetar(){
+    this.formulario.reset();
   }
 
 }
