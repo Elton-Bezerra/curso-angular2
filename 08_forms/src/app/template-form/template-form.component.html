@@ -36,8 +36,8 @@
       <!-- CEP -->
       <div class="col-md-3" [ngClass]="aplicaCssErro(cep)">
         <label for="cep" class="control-label">CEP</label>
-        <input placeholder="12345-789" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel"
-          (blur)="consultaCEP($event.target.value)">
+        <input placeholder="12345-789 ou 12345678" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel"
+          (blur)="consultaCEP($event.target.value, f)">
 
         <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
 
@@ -66,7 +66,7 @@
       </div>
 
       <div class="col-sm-12">
-        <input type="text" class="form-control" id="rua" name="rua" [ngModel]="usuario.rua" required #rua="ngModel" readonly>
+        <input type="text" class="form-control" id="rua" name="rua" ngModel required #rua="ngModel" readonly>
 
         <app-campo-control-erro campo="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
 
@@ -86,7 +86,7 @@
       <!-- CIDADE -->
       <div class="col-md-4" [ngClass]="aplicaCssErro(cidade)">
         <label for="cidade" class="control-label">Cidade</label>
-        <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel">
+        <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel" readonly>
 
         <app-campo-control-erro campo="cidade" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
 
@@ -95,7 +95,7 @@
       <!-- ESTADO -->
       <div class="col-md-3" [ngClass]="aplicaCssErro(estado)">
         <label for="estado" class="control-label">Estado</label>
-        <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel">
+        <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel" readonly>
 
         <app-campo-control-erro campo="estado" [mostrarErro]="validador(estado)"></app-campo-control-erro>
       </div>
