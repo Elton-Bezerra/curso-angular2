@@ -10,7 +10,7 @@
       <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" [ngModel]="usuario.nome" required
         #nome="ngModel">
 
-      <app-campo-control-erro campo="nome" [mostrarErro]="validador(nome)"></app-campo-control-erro>
+      <app-campo-control-erro msg="Nome é obrigatório" [mostrarErro]="validador(nome)"></app-campo-control-erro>
 
     </div>
 
@@ -25,7 +25,7 @@
       <input type="email" class="form-control" id="email" name="email" placeholder="nome@email.com" [ngModel]="usuario.email" required
         email #email="ngModel">
 
-      <app-campo-control-erro campo="email" [mostrarErro]="validador(email)"></app-campo-control-erro>
+      <app-campo-control-erro msg="Email  é obrigatório" [mostrarErro]="validador(email)"></app-campo-control-erro>
 
     </div>
   </div>
@@ -39,7 +39,7 @@
         <input placeholder="12345-789 ou 12345678" type="text" class="form-control" id="cep" name="cep" ngModel required #cep="ngModel"
           (blur)="consultaCEP($event.target.value, f)">
 
-        <app-campo-control-erro campo="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
+        <app-campo-control-erro msg="CEP" [mostrarErro]="validador(cep)"></app-campo-control-erro>
 
       </div>
       <!-- NUMERO -->
@@ -47,7 +47,7 @@
         <label for="numero" class="control-label">Número</label>
         <input placeholder="100" type="text" class="form-control" id="numero" name="numero" ngModel required #numero="ngModel">
 
-        <app-campo-control-erro campo="número" [mostrarErro]="validador(numero)"></app-campo-control-erro>
+        <app-campo-control-erro msg="Número  é obrigatório" [mostrarErro]="validador(numero)"></app-campo-control-erro>
 
       </div>
       <!-- COMPLEMENTO -->
@@ -68,18 +68,18 @@
       <div class="col-sm-12">
         <input type="text" class="form-control" id="rua" name="rua" ngModel required #rua="ngModel" readonly>
 
-        <app-campo-control-erro campo="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
+        <app-campo-control-erro msg="rua" [mostrarErro]="validador(rua)"></app-campo-control-erro>
 
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group"> 
       <!-- BAIRRO -->
       <div class="col-md-5" [ngClass]="aplicaCssErro(bairro)">
         <label for="bairro" class="control-label">Bairro</label>
         <input type="text" class="form-control" id="bairro" name="bairro" ngModel required #bairro="ngModel">
 
-        <app-campo-control-erro campo="bairro" [mostrarErro]="validador(bairro)"></app-campo-control-erro>
+        <app-campo-control-erro msg="Bairro  é obrigatório" [mostrarErro]="validador(bairro)"></app-campo-control-erro>
 
       </div>
 
@@ -88,7 +88,7 @@
         <label for="cidade" class="control-label">Cidade</label>
         <input type="text" class="form-control" id="cidade" name="cidade" ngModel required #cidade="ngModel" readonly>
 
-        <app-campo-control-erro campo="cidade" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
+        <app-campo-control-erro msg="Cidade  é obrigatório" [mostrarErro]="validador(cidade)"></app-campo-control-erro>
 
       </div>
 
@@ -97,7 +97,7 @@
         <label for="estado" class="control-label">Estado</label>
         <input type="text" class="form-control" id="estado" name="estado" ngModel required #estado="ngModel" readonly>
 
-        <app-campo-control-erro campo="estado" [mostrarErro]="validador(estado)"></app-campo-control-erro>
+        <app-campo-control-erro msg="Estado  é obrigatório" [mostrarErro]="validador(estado)"></app-campo-control-erro>
       </div>
     </div>
   </div>  

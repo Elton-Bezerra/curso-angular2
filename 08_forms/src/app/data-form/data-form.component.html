@@ -65,7 +65,7 @@
       </div>
 
       <div class="col-sm-12">
-        <input type="text" class="form-control" id="rua" formControlName="rua">
+        <input type="text" class="form-control" id="rua" formControlName="rua" readonly>
 
         <app-campo-control-erro msg="Rua é obrigatório!" [mostrarErro]="validador('endereco.rua')"></app-campo-control-erro>
 
@@ -101,7 +101,7 @@
     </div>
   </div>
 
-  <button [disabled]="!formulario.valid" type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default">Submit</button>
   <button (click)="resetar()" class="btn">Cancelar</button>
 
   <app-form-debug [form]="formulario"></app-form-debug>
